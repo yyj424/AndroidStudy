@@ -1,4 +1,4 @@
-package com.example.study
+package com.example.study.activity
 
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
@@ -9,29 +9,37 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import androidx.databinding.DataBindingUtil
+import com.example.study.R
+import com.example.study.databinding.ActivityMain2Binding
 import com.example.study.databinding.ActivityMainBinding
+import com.example.study.viewModel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+    private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        setSupportActionBar(binding.toolbar)
-
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController, appBarConfiguration)
-
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
+        setContentView(R.layout.activity_main2)
+        val b = DataBindingUtil.setContentView<ActivityMain2Binding>(this, R.layout.activity_main2) // layout 이름에 따라 바뀜
+        b.data = viewModel //layout 안에 있는 viewModel 변수를 viewModel과 바인딩!
+        b.lifecycleOwner = this
+//        binding = ActivityMainBinding.inflate(layoutInflater)
+//        setContentView(binding.root)
+//
+//        setSupportActionBar(binding.toolbar)
+//
+//        val navController = findNavController(R.id.nav_host_fragment_content_main)
+//        appBarConfiguration = AppBarConfiguration(navController.graph)
+//        setupActionBarWithNavController(navController, appBarConfiguration)
+//
+//        binding.fab.setOnClickListener { view ->
+//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                .setAction("Action", null).show()
+//        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
