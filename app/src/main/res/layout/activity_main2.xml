@@ -14,25 +14,47 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/tvUser"
+            android:id="@+id/tvFirst"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:layout_marginTop="50dp"
             android:text="@{data.main_txt}"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/btnUser"
+            android:id="@+id/btnFirst"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:text="Button"
-            android:onClick="@{()->data.onClick()}"
+            android:onClick="@{()->data.firstClick()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvUser" />
+            app:layout_constraintTop_toBottomOf="@+id/tvFirst" />
+
+        <TextView
+            android:id="@+id/tvSecond"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="@{data.num.toString()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnFirst" />
+
+        <Button
+            android:id="@+id/btnSecond"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="#8BC34A"
+            android:onClick="@{()->data.secondClick()}"
+            android:text="Button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSecond" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -10,6 +10,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import com.example.study.R
 import com.example.study.databinding.ActivityMain2Binding
 import com.example.study.databinding.ActivityMainBinding
@@ -18,17 +19,23 @@ import com.example.study.viewModel.MainViewModel
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMain2Binding
     private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main2)
+
+        /** data binding **/
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java) //해당 viewModel의 owner를 mainActivity로 설정
+        // 위 코드는 viewModel : MainViewModel by viewModels()로 대체 가능!
         val b = DataBindingUtil.setContentView<ActivityMain2Binding>(this, R.layout.activity_main2) // layout 이름에 따라 바뀜
         b.data = viewModel //layout 안에 있는 viewModel 변수를 viewModel과 바인딩!
         b.lifecycleOwner = this
-//        binding = ActivityMainBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
+
+        /** view binding
+        binding = ActivityMain2Binding.inflate(layoutInflater)//액티에서 사용할 바인딩 클래스의 인스턴스 생성
+        setContentView(binding.root)//view binding, root:레이아웃 내부의 최상위 위치 뷰의 인스턴스 활용용
+       //id 접근 시 binding.[id] 사용**/
 //
 //        setSupportActionBar(binding.toolbar)
 //
